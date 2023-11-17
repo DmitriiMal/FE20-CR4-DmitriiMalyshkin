@@ -1,16 +1,41 @@
 <?php
 require_once "components/db_connection.php";
+//upload
 
 if (isset($_POST['submit'])) {
+
   $ISBN = $_POST['ISBN'];
   $title = $_POST['title'];
   $image = $_POST['image'];
+  $type = $_POST['type'];
   $short_description = $_POST['short_description'];
   $author_first_name = $_POST['author_first_name'];
   $author_last_name = $_POST['author_last_name'];
   $publisher_name = $_POST['publisher_name'];
   $publisher_address = $_POST['publisher_address'];
   $publish_date = $_POST['publish_date'];
+
+  // Generate random ISBN if it isn't entered
+  if (empty($_POST['ISBN'])) {
+    $sql = "INSERT INTO `library`(`ISBN`, `title`, `image`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`) VALUES (FLOOR(RAND() * 10000000000),'$title','$image','$short_description','$type','$author_first_name','$author_last_name','$publisher_name','$publisher_address','$publish_date')";
+  } else {
+    $sql = "INSERT INTO `library`(`ISBN`,`title`, `image`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`) VALUES ($ISBN, '$title','$image','$short_description','$type','$author_first_name','$author_last_name','$publisher_name','$publisher_address','$publish_date')";
+  }
+
+  // Call data from database
+  if ($result = mysqli_query($connect, $sql)) {
+    echo "
+    <div class='alert alert-success' role='alert'>
+      New object has been created!
+    </div>
+    ";
+  } else {
+    echo "
+    <div class='alert alert-danger' role='alert'>
+      Something went wrong ¯\_(ツ)_/¯ 
+    </div>
+    ";
+  }
 }
 
 
@@ -30,23 +55,24 @@ if (isset($_POST['submit'])) {
   <?php require_once "components/navbar.php" ?>
   <div class="container">
 
-    <form action="" method="post" class="row row-cols-1 gap-3 p-4">
+    <form action="" method="post" enctype="multipart/form-data" class="row row-cols-1 gap-3 p-4">
 
-      <input type="number" name="ISBN" placeholder="ISBN">
-      <input type="text" name="title" placeholder="Title">
-      <input type="text" name="image" placeholder="Image">
-      <input type="text" name="short_description" placeholder="Short description">
-      <select name="type">
+      <input type="number" name="ISBN" placeholder="ISBN" class="form-control">
+      <input type="text" name="title" placeholder="Title" class="form-control">
+      <!-- <input type="text" name="image" placeholder="Image"> -->
+      <input type="text" name="short_description" placeholder="Short description" class="form-control">
+      <input type="text" name="author_first_name" placeholder="Author first name" class="form-control">
+      <input type="text" name="author_last_name" placeholder="Author last name" class="form-control">
+      <input type="text" name="publisher_name" placeholder="Publisher name" class="form-control">
+      <input type="text" name="publisher_address" placeholder="Publisher address" class="form-control">
+      <select name="type" class="form-control">
         <option selected value="book">Book</option>
         <option value="cd">CD</option>
         <option value="dvd">DVD</option>
       </select>
-      <input type="text" name="author_first_name" placeholder="Author first name">
-      <input type="text" name="author_last_name" placeholder="Author last name">
-      <input type="text" name="publisher_name" placeholder="Publisher name">
-      <input type="text" name="publisher_address" placeholder="Publisher address">
-      <input type="date" name="publish_date" placeholder="Publish date">
-      <input type="submit" name="submit" value="Create">
+      <input type="date" name="publish_date" placeholder="Publish date" class="form-control">
+      <input type="file" name="image" placeholder="Image" class="form-control">
+      <input type="submit" name="submit" value="Create" class="btn btn-primary">
 
 
     </form>
