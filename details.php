@@ -1,5 +1,6 @@
 <?php
 require_once "components/db_connection.php";
+require_once "components/navbar.php";
 
 
 if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
@@ -34,6 +35,8 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
     }
   }
 }
+
+mysqli_close($connect);
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +50,7 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
 </head>
 
 <body>
-  <?php require_once "components/navbar.php" ?>
+  <?= $navbar ?>
   <div class="container">
 
     <?= $cards ?>

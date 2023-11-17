@@ -2,6 +2,7 @@
 require_once "components/db_connection.php";
 require_once "components/file_upload.php";
 require_once "components/navbar.php";
+echo $navbar;
 
 if (isset($_POST['submit'])) {
 
@@ -43,7 +44,7 @@ if (isset($_POST['submit'])) {
   }
 }
 
-
+mysqli_close($connect);
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +65,6 @@ if (isset($_POST['submit'])) {
 
       <input type="number" name="ISBN" placeholder="ISBN" class="form-control">
       <input type="text" name="title" placeholder="Title" class="form-control">
-      <!-- <input type="text" name="image" placeholder="Image"> -->
       <input type="text" name="short_description" placeholder="Short description" class="form-control">
       <input type="text" name="author_first_name" placeholder="Author first name" class="form-control">
       <input type="text" name="author_last_name" placeholder="Author last name" class="form-control">

@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
   }
 }
 
-
+mysqli_close($connect);
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +38,7 @@ if (mysqli_num_rows($result) > 0) {
 </head>
 
 <body>
+  <?= $navbar ?>
   <div class="container">
     <div class="row row-cols-xs-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
       <?= $cards ?>
