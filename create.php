@@ -1,12 +1,17 @@
 <?php
 require_once "components/db_connection.php";
-//upload
+require_once "components/file_upload.php";
+require_once "components/navbar.php";
 
 if (isset($_POST['submit'])) {
 
+  // echo "<pre>";
+  // var_dump($_FILES['image']);
+  // echo "</pre>";
+
   $ISBN = $_POST['ISBN'];
   $title = $_POST['title'];
-  $image = $_POST['image'];
+  $image = fileUpload($_FILES['image']);
   $type = $_POST['type'];
   $short_description = $_POST['short_description'];
   $author_first_name = $_POST['author_first_name'];
@@ -17,9 +22,9 @@ if (isset($_POST['submit'])) {
 
   // Generate random ISBN if it isn't entered
   if (empty($_POST['ISBN'])) {
-    $sql = "INSERT INTO `library`(`ISBN`, `title`, `image`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`) VALUES (FLOOR(RAND() * 10000000000),'$title','$image','$short_description','$type','$author_first_name','$author_last_name','$publisher_name','$publisher_address','$publish_date')";
+    $sql = "INSERT INTO `library`(`ISBN`, `title`, `image`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`) VALUES (FLOOR(RAND() * 10000000000),'$title','$image[0]','$short_description','$type','$author_first_name','$author_last_name','$publisher_name','$publisher_address','$publish_date')";
   } else {
-    $sql = "INSERT INTO `library`(`ISBN`,`title`, `image`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`) VALUES ($ISBN, '$title','$image','$short_description','$type','$author_first_name','$author_last_name','$publisher_name','$publisher_address','$publish_date')";
+    $sql = "INSERT INTO `library`(`ISBN`,`title`, `image`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`) VALUES ($ISBN, '$title','$image[0]','$short_description','$type','$author_first_name','$author_last_name','$publisher_name','$publisher_address','$publish_date')";
   }
 
   // Call data from database
@@ -51,8 +56,8 @@ if (isset($_POST['submit'])) {
   <title>Library</title>
 </head>
 
+
 <body>
-  <?php require_once "components/navbar.php" ?>
   <div class="container">
 
     <form action="" method="post" enctype="multipart/form-data" class="row row-cols-1 gap-3 p-4">
