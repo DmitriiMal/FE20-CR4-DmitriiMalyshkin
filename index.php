@@ -1,5 +1,6 @@
 <?php
 require_once "components/db_connection.php";
+require_once "components/navbar.php";
 $sql = "SELECT * FROM `library`";
 $result = mysqli_query($connect, $sql);
 $cards = "";
@@ -37,7 +38,6 @@ if (mysqli_num_rows($result) > 0) {
 </head>
 
 <body>
-  <?php require_once "components/navbar.php" ?>
   <div class="container">
     <div class="row row-cols-xs-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
       <?= $cards ?>
