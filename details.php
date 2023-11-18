@@ -26,7 +26,8 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
             <p class='card-text'>$row[publisher_name]</p>
             <p class='card-text'>$row[publisher_address]</p>
             <p class='card-text'>$row[publish_date]</p>
-            <a href='update.php?ISBN=$row[ISBN]'' class='btn btn-warning'>Edit</a>
+            <a href='index.php' class='btn btn-dark'>Back</a>
+            <a href='update.php?ISBN=$row[ISBN]' class='btn btn-warning'>Edit</a>
             <a href='delete.php?ISBN=$row[ISBN]' class='btn btn-danger'>Delite</a>
           </div>
         </div>
