@@ -1,19 +1,18 @@
-
 <?php
 $navbar = "
-<nav class='navbar navbar-expand-lg bg-body-tertiary'>
-  <div class='container-fluid'>
-    <a class='navbar-brand' href='index.php'>Navbar</a>
-    <!-- <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
-      <span class='navbar-toggler-icon'></span>
-    </button> -->
-    <!-- <div class='collapse navbar-collapse' id='navbarNavAltMarkup'> -->
-    <!-- <div class='navbar-nav'> -->
-    <!-- <a class='nav-link active' aria-current='page' href='#'>Home</a> -->
-    <a class='nav-link' href='create.php'>Create</a>
-    <!-- </div> -->
-    <!-- </div> -->
-  </div>
-</nav>
+  <nav>
+    <input id='nav-toggle' type='checkbox' />
+    <div class='logo'>
+      <a href='index.php'><i class='fa-solid fa-book-open-reader'></i> LibraLink</a>
+    </div>
+    <ul class='links'>
+      <li><a href='index.php'>Home</a></li>
+      <li><a href='create.php'>Create</a></li>
+    </ul>
+    <label for='nav-toggle' class='icon-burger'>
+      <div class='line'></div>
+      <div class='line'></div>
+      <div class='line'></div>
+    </label>
+  </nav>
 ";
-?>
