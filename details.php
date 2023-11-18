@@ -32,29 +32,31 @@ mysqli_close($connect);
 
 <body>
   <?= $navbar ?>
-  <div class="container">
+  <div class="container ">
 
-    <div class='my-2'>
-      <div class='card'>
-        <img src='images/<?= $row['image'] ?>' class='card-img-top' alt='...'>
-        <div class='card-body'>
-          <h5 class='card-title'> <?= $row['title'] ?></h5>
-          <p class='card-text'><?= $row['ISBN'] ?></p>
-          <p class='card-text'><?= $row['author_first_name'] ?> <?= $row['author_first_name'] ?></p>
-          <p class='card-text'><?= $row['short_description'] ?></p>
-          <p class='card-text'><?= $row['type'] ?></p>
-          <a href='publisher.php?publisher_name=<?= urlencode($row['publisher_name']) ?>'>
 
-            <p class='card-text fs-6'><?= $row['publisher_name'] ?></p>
-          </a>
-          <p class='card-text'><?= $row['publisher_address'] ?></p>
-          <p class='card-text'><?= $row['publish_date'] ?></p>
-          <a href='index.php' class='btn btn-dark'>Home</a>
-          <a href='update.php?ISBN=$row[ISBN]' class='btn btn-warning'>Edit</a>
-          <a href='delete.php?ISBN=$row[ISBN]' class='btn btn-danger'>Delete</a>
-        </div>
-      </div>
+
+    <img id="grig-image" src='images/<?= $row['image'] ?>' class='card-img-top' alt='...'>
+
+    <div id="grig-info">
+      <h2> <?= $row['title'] ?></h2>
+      <p><strong>ISBN: </strong><?= $row['ISBN'] ?></p>
+      <p><strong>Author: </strong><?= $row['author_first_name'] ?> <?= $row['author_first_name'] ?></p>
+      <p><strong>Description:</strong></p>
+      <p><?= $row['short_description'] ?></p>
+      <p><strong>Type: </strong><?= $row['type'] ?></p>
+      <p><a href='publisher.php?publisher_name=<?= urlencode($row['publisher_name']) ?>'><?= $row['publisher_name'] ?></p></a>
+      <p><strong>Publisher: </strong><?= $row['publisher_address'] ?></p>
+      <p><strong>Date of publication</strong><?= $row['publish_date'] ?></p>
     </div>
+    <div id="grig-buttons">
+      <a href='index.php' class='btn btn-primary'>Home</a>
+      <a href='update.php?ISBN=<?= $row['ISBN'] ?>' class='btn btn-secondary'>Edit</a>
+      <a href='delete.php?ISBN=<?= $row['ISBN'] ?>' class='btn btn-tertiary'>Delete</a>
+    </div>
+
+
+
 
   </div>
 </body>

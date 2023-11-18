@@ -8,27 +8,17 @@ $cards = "";
 if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
     $cards .= "
-
-
-
     <div class='m-03'>
       <div class='card'>
-          
           <img src='images/$row[image]' alt=''>
           <div class='details'>
               <label>$row[title]</label>
               <p>$row[author_first_name] $row[author_last_name]</p>
               <!--  <a href='publisher.php?publisher_name=$row[publisher_name]'> -->
-            <a class='pub-link' href='publisher.php?publisher_name=" . urlencode($row['publisher_name']) . "'>
-
-              <p class='card-text fs-6'>$row[publisher_name]</p>
-            </a>
-
+              <p class='card-text fs-6'>Publisher: <a class='pub-link' href='publisher.php?publisher_name=" . urlencode($row['publisher_name']) . "'>$row[publisher_name]</a></p>
               <a href='details.php?ISBN=$row[ISBN]' class='btn btn-primary'>Details</a>
               <a href='update.php?ISBN=$row[ISBN]' class='btn btn-secondary'>Edit</a>
               <a href='delete.php?ISBN=$row[ISBN]' class='btn btn-tertiary'>Delete</a>
-
-
           </div>
       </div>
     </div>

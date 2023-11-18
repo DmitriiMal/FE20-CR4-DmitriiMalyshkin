@@ -161,6 +161,10 @@ nav .icon-burger .line {
   margin-top: 100px;
 }
 
+.pt-120 {
+  padding-top: 120px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -177,10 +181,6 @@ body {
 a {
   color: #333;
   text-decoration: none;
-}
-
-.pt-120 {
-  padding-top: 120px;
 }
 
 .container {
@@ -281,21 +281,26 @@ a {
   background: rgba(232, 180, 180, 1);
   color: #333;
   border-radius: 2px;
-  transition: background 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 
   &-secondary {
     background: rgba(174, 205, 206, 1);
   }
 
   &-tertiary {
-    background: rgba(238, 244, 244, 1);
+    background: rgb(193, 202, 202);
   }
 
   &:hover {
-    background: #e4a994;
+    opacity: 0.8;
   }
 }
 
 .pub-link {
   color: white;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: rgba(174, 205, 206, 1);
+  }
 }

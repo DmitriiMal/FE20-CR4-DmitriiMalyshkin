@@ -31,13 +31,13 @@ if (isset($_POST['submit'])) {
   // Call data from database
   if ($result = mysqli_query($connect, $sql)) {
     echo "
-    <div class='alert alert-success' role='alert'>
+    <div class='alert alert-success pt-120' role='alert'>
       New object has been created!
     </div>
     ";
   } else {
     echo "
-    <div class='alert alert-danger' role='alert'>
+    <div class='alert alert-danger' role='alert pt-120'>
       Something went wrong ¯\_(ツ)_/¯ 
     </div>
     ";
@@ -53,6 +53,7 @@ mysqli_close($connect);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="style/style.css">
   <script src="https://kit.fontawesome.com/553d5d3b41.js" crossorigin="anonymous"></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -61,7 +62,7 @@ mysqli_close($connect);
 
 
 <body>
-  <div class="container">
+  <div class="container pt-120 ">
 
     <form action="" method="post" enctype="multipart/form-data" class="row row-cols-1 gap-3 p-4">
 

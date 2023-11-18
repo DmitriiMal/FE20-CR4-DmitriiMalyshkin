@@ -136,6 +136,10 @@ nav .icon-burger .line {
   margin-top: 100px;
 }
 
+.pt-120 {
+  padding-top: 120px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -152,10 +156,6 @@ body {
 a {
   color: #333;
   text-decoration: none;
-}
-
-.pt-120 {
-  padding-top: 120px;
 }
 
 .container {
@@ -257,18 +257,22 @@ a {
   background: rgb(232, 180, 180);
   color: #333;
   border-radius: 2px;
-  transition: background 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 .btn-secondary {
   background: rgb(174, 205, 206);
 }
 .btn-tertiary {
-  background: rgb(238, 244, 244);
+  background: rgb(193, 202, 202);
 }
 .btn:hover {
-  background: #e4a994;
+  opacity: 0.8;
 }
 
 .pub-link {
   color: white;
+  transition: color 0.2s ease-in-out;
+}
+.pub-link:hover {
+  color: rgb(174, 205, 206);
 }/*# sourceMappingURL=style.css.map */
