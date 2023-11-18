@@ -16,7 +16,7 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
 
 if (isset($_POST['submit'])) {
 
-  $ISBN = $_POST['ISBN'];
+
   $title = $_POST['title'];
   $image = fileUpload($_FILES['image']);
   $type = $_POST['type'];
@@ -31,19 +31,11 @@ if (isset($_POST['submit'])) {
     if ($row['image'] !== "product.png") {
       unlink("images/$row[image]");
     }
-    // Ignore ISBN if it isn't entered
-    // if (empty($_POST['ISBN'])) {
-    //   $sql = "UPDATE `library` SET `title`='$title',`image`='$image[0]',`short_description`='$short_description',`type`='$type',`author_first_name`='$author_first_name',`author_last_name`='$author_last_name',`publisher_name`='$publisher_name',`publisher_address`='$publisher_address',`publish_date`='$publish_date' WHERE `ISBN`= $ISBN";
-    // } else {
+
     $sql = "UPDATE `library` SET `ISBN`='$ISBN',`title`='$title',`image`='$image[0]',`short_description`='$short_description',`type`='$type',`author_first_name`='$author_first_name',`author_last_name`='$author_last_name',`publisher_name`='$publisher_name',`publisher_address`='$publisher_address',`publish_date`='$publish_date' WHERE `ISBN`= $ISBN";
-    // }
   } else {
-    // Ignore ISBN if it isn't entered
-    // if (empty($_POST['ISBN'])) {
-    //   $sql = "UPDATE `library` SET `title`='$title',`short_description`='$short_description',`type`='$type',`author_first_name`='$author_first_name',`author_last_name`='$author_last_name',`publisher_name`='$publisher_name',`publisher_address`='$publisher_address',`publish_date`='$publish_date' WHERE `ISBN`= $ISBN";
-    // } else {
+
     $sql = "UPDATE `library` SET `ISBN`='$ISBN',`title`='$title',`short_description`='$short_description',`type`='$type',`author_first_name`='$author_first_name',`author_last_name`='$author_last_name',`publisher_name`='$publisher_name',`publisher_address`='$publisher_address',`publish_date`='$publish_date' WHERE `ISBN`= $ISBN";
-    // }
   }
 
 
@@ -84,7 +76,6 @@ mysqli_close($connect);
 
     <form action="" method="post" enctype="multipart/form-data" class="row row-cols-1 gap-3 p-4">
 
-      <input type="number" name="ISBN" placeholder="ISBN" value="<?= $row['ISBN'] ?? "" ?>" class="form-control">
       <input type="text" name="title" placeholder="Title" value="<?= $row['title'] ?? "" ?>" class="form-control">
       <input type="text" name="short_description" placeholder="Short description" value="<?= $row['short_description'] ?? "" ?>" class="form-control">
       <input type="text" name="author_first_name" placeholder="Author first name" value="<?= $row['author_first_name'] ?? "" ?>" class="form-control">
