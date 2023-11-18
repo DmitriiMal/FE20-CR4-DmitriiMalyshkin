@@ -8,6 +8,7 @@ require_once "components/navbar.php";
 require_once "components/navbar.php";
 
 if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
+
   $ISBN = $_GET['ISBN'];
   $sql = "SELECT * FROM `library` WHERE `ISBN`= $ISBN";
   $result = mysqli_query($connect, $sql);
@@ -43,7 +44,7 @@ if (isset($_POST['submit'])) {
   if ($result = mysqli_query($connect, $sql)) {
     echo "
     <div class='alert alert-success' role='alert'>
-      New object has been updated!
+      The object has been updated!
     </div>
     ";
   } else {

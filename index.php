@@ -16,12 +16,20 @@ if (mysqli_num_rows($result) > 0) {
             <p class='card-text'>$row[author_first_name] $row[author_first_name]</p>
             <a href='details.php?ISBN=$row[ISBN]' class='btn btn-primary'>Details</a>
             <a href='update.php?ISBN=$row[ISBN]' class='btn btn-warning'>Edit</a>
-            <a href='delete.php?ISBN=$row[ISBN]' class='btn btn-danger'>Delite</a>
+            <a href='delete.php?ISBN=$row[ISBN]' class='btn btn-danger'>Delete</a>
+            
+            <!--  <a href='publisher.php?publisher_name=$row[publisher_name]'> -->
+            <a href='publisher.php?publisher_name=" . urlencode($row['publisher_name']) . "'>
+
+              <p class='card-text fs-6'>$row[publisher_name]</p>
+            </a>
           </div>
         </div>
     </div>
     ";
   }
+} else {
+  $cards = "<p>No data found ¯\_(ツ)_/¯</p>";
 }
 
 mysqli_close($connect);
@@ -46,5 +54,6 @@ mysqli_close($connect);
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+<!--  -->
 
 </html>

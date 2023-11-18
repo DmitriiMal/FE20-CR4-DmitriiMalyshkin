@@ -3,11 +3,15 @@ require_once "components/db_connection.php";
 require_once "components/navbar.php";
 
 
-if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
+if (isset($_GET['publisher_name']) && !empty($_GET['publisher_name'])) {
 
-  $sql = "SELECT * FROM `library` WHERE `ISBN` = $_GET[ISBN]";
+  $publisher_name = urldecode($_GET['publisher_name']);
+
+
+  $sql = "SELECT * FROM `library` WHERE `publisher_name` = '$publisher_name'";
 
   $result = mysqli_query($connect, $sql);
+
 
   $cards = "";
 
@@ -19,24 +23,22 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
           <img src='images/$row[image]' class='card-img-top' alt='...'>
           <div class='card-body'>
             <h5 class='card-title'>$row[title]</h5>
-            <p class='card-text'>$row[ISBN]</p>
             <p class='card-text'>$row[author_first_name] $row[author_first_name]</p>
-            <p class='card-text'>$row[short_description]</p>
-            <p class='card-text'>$row[type]</p>
-            <p class='card-text'>$row[publisher_name]</p>
-            <p class='card-text'>$row[publisher_address]</p>
-            <p class='card-text'>$row[publish_date]</p>
-            <a href='index.php' class='btn btn-dark'>Back</a>
+            <a href='details.php?ISBN=$row[ISBN]' class='btn btn-primary'>Details</a>
             <a href='update.php?ISBN=$row[ISBN]' class='btn btn-warning'>Edit</a>
-            <a href='delete.php?ISBN=$row[ISBN]' class='btn btn-danger'>Delete</a>
+            <a href='delete.php?ISBN=$row[ISBN]' class='btn btn-danger'>Delite</a>
+            <a href='publisher.php?publisher_name=$row[publisher_name]'>
+              <p class='card-text fs-6'>$row[publisher_name]</p>
+            </a>
           </div>
         </div>
     </div>
     ";
     }
+  } else {
+    $cards = "<p>No data found ¯\_(ツ)_/¯</p>";
   }
 }
-
 mysqli_close($connect);
 ?>
 
@@ -53,9 +55,10 @@ mysqli_close($connect);
 <body>
   <?= $navbar ?>
   <div class="container">
-
-    <?= $cards ?>
-
+    <h3>Publisher: <?= $_GET['publisher_name'] ?></h3>
+    <div class="row row-cols-xs-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
+      <?= $cards ?>
+    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
