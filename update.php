@@ -2,7 +2,7 @@
 require_once "components/db_connection.php";
 require_once "components/file_upload.php";
 require_once "components/navbar.php";
-// echo $navbar;
+
 
 
 require_once "components/navbar.php";
