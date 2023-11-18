@@ -23,10 +23,13 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
             <p class='card-text'>$row[author_first_name] $row[author_first_name]</p>
             <p class='card-text'>$row[short_description]</p>
             <p class='card-text'>$row[type]</p>
-            <p class='card-text'>$row[publisher_name]</p>
+            <a href='publisher.php?publisher_name=" . urlencode($row['publisher_name']) . "'>
+
+              <p class='card-text fs-6'>$row[publisher_name]</p>
+            </a>
             <p class='card-text'>$row[publisher_address]</p>
             <p class='card-text'>$row[publish_date]</p>
-            <a href='index.php' class='btn btn-dark'>Back</a>
+            <a href='index.php' class='btn btn-dark'>Home</a>
             <a href='update.php?ISBN=$row[ISBN]' class='btn btn-warning'>Edit</a>
             <a href='delete.php?ISBN=$row[ISBN]' class='btn btn-danger'>Delete</a>
           </div>
