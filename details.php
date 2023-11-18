@@ -32,11 +32,7 @@ mysqli_close($connect);
 
 <body>
   <?= $navbar ?>
-  <div class="container ">
-
-
-
-    <img id="grig-image" src='images/<?= $row['image'] ?>' class='card-img-top' alt='...'>
+  <div class="container grid-details pt-120">
 
     <div id="grig-info">
       <h2> <?= $row['title'] ?></h2>
@@ -54,6 +50,7 @@ mysqli_close($connect);
       <a href='update.php?ISBN=<?= $row['ISBN'] ?>' class='btn btn-secondary'>Edit</a>
       <a href='delete.php?ISBN=<?= $row['ISBN'] ?>' class='btn btn-tertiary'>Delete</a>
     </div>
+    <img id="grig-image" src='images/<?= $row['image'] ?>' class='card-img-top' alt='...'>
 
 
 

@@ -275,4 +275,28 @@ a {
 }
 .pub-link:hover {
   color: rgb(174, 205, 206);
+}
+
+.grid-details {
+  display: grid;
+  gap: 1rem;
+  grid-template-areas: "info image image" "buttons image image" "buttons image image";
+}
+
+#grig-info {
+  grid-area: info;
+}
+
+#grig-buttons {
+  grid-area: buttons;
+}
+
+#grig-image {
+  grid-area: image;
+}
+
+@media (max-width: 1100px) {
+  .grid-details {
+    grid-template-areas: "info" "buttons" "image";
+  }
 }/*# sourceMappingURL=style.css.map */
