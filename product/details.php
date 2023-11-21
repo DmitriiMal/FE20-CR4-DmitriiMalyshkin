@@ -1,6 +1,6 @@
 <?php
-require_once "components/db_connection.php";
-require_once "components/navbar.php";
+require_once "../components/db_connection.php";
+require_once "../components/navbar.php";
 
 
 if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
@@ -15,6 +15,7 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
   }
 }
 
+
 mysqli_close($connect);
 ?>
 
@@ -24,7 +25,7 @@ mysqli_close($connect);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="../style/style.css">
   <script src="https://kit.fontawesome.com/553d5d3b41.js" crossorigin="anonymous"></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <title>Details | LibraLink</title>
@@ -46,12 +47,11 @@ mysqli_close($connect);
       <p><strong>Date of publication</strong><?= $row['publish_date'] ?></p>
     </div>
     <div id="grig-buttons">
-      <a href='index.php' class='btn btn-primary'>Home</a>
+      <a href='../index.php' class='btn btn-primary'>Home</a>
       <a href='update.php?ISBN=<?= $row['ISBN'] ?>' class='btn btn-secondary'>Edit</a>
       <a href='delete.php?ISBN=<?= $row['ISBN'] ?>' class='btn btn-tertiary'>Delete</a>
     </div>
-    <img id="grig-image" src='images/<?= $row['image'] ?>' class='card-img-top' alt='...'>
-
+    <img id="grig-image" src='../images/<?= $row['image'] ?>' class='card-img-top' alt='...'>
 
 
 

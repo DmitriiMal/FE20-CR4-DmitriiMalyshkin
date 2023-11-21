@@ -1,5 +1,5 @@
 <?php
-require_once "components/db_connection.php";
+require_once "../components/db_connection.php";
 
 
 if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
@@ -9,7 +9,7 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
   $row = mysqli_fetch_assoc($result);
 
   if ($row['image'] !== "product.png") {
-    unlink("images/$row[image]");
+    unlink("../images/$row[image]");
   }
 
   $sql = "DELETE FROM `library` WHERE `ISBN`= $ISBN";
@@ -17,9 +17,9 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
   mysqli_query($connect, $sql);
 
   mysqli_close($connect);
-  header("Location: index.php");
+  header("Location: ../index.php");
 } else {
 
   mysqli_close($connect);
-  header("Location: index.php");
+  header("Location: ../index.php");
 }

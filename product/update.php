@@ -1,11 +1,9 @@
 <?php
-require_once "components/db_connection.php";
-require_once "components/file_upload.php";
-require_once "components/navbar.php";
+require_once "../components/db_connection.php";
+require_once "../components/file_upload.php";
+require_once "../components/navbar.php";
 
 
-
-require_once "components/navbar.php";
 
 if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
 
@@ -66,9 +64,9 @@ mysqli_close($connect);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="../style/style.css">
   <script src="https://kit.fontawesome.com/553d5d3b41.js" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
   <title>Edit | LibraLink</title>
 </head>
 
@@ -93,7 +91,7 @@ mysqli_close($connect);
       </select>
       <input type="date" name="publish_date" placeholder="Publish date" value="<?= $row['publish_date'] ?? "" ?>" class="form-control">
       <input type="file" name="image" placeholder="Image" class="form-control">
-      <input type="submit" name="submit" value="Update" class="btn btn-primary">
+      <input type="submit" name="submit" value="Update" class="btn btn-secondary">
 
 
     </form>
