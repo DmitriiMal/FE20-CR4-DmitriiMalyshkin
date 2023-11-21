@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if ((!isset($_SESSION['user']) && !isset($_SESSION['adm'])) || isset($_SESSION['user'])) {
+  header("Location: /FE20-CR4-DmitriiMalyshkin/index.php");
+  die();
+}
+
 require_once "../components/db_connection.php";
 
 

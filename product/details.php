@@ -27,7 +27,7 @@ mysqli_close($connect);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style/style.css">
   <script src="https://kit.fontawesome.com/553d5d3b41.js" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
   <title>Details | LibraLink</title>
 </head>
 
