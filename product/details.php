@@ -1,11 +1,12 @@
 <?php
+session_start();
 require_once "../components/db_connection.php";
 require_once "../components/navbar.php";
 
 
 if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
 
-  $sql = "SELECT * FROM `library` WHERE `ISBN` = $_GET[ISBN]";
+  $sql = "SELECT * FROM `library` as l LEFT JOIN `suppliers` as s ON l.fk_supplier= s.sup_id WHERE `ISBN` = $_GET[ISBN]";
 
   $result = mysqli_query($connect, $sql);
 
@@ -42,14 +43,21 @@ mysqli_close($connect);
       <p><strong>Description:</strong></p>
       <p><?= $row['short_description'] ?></p>
       <p><strong>Type: </strong><?= $row['type'] ?></p>
-      <p><a href='publisher.php?publisher_name=<?= urlencode($row['publisher_name']) ?>'><?= $row['publisher_name'] ?></p></a>
+      <p><a href='../publisher.php?publisher_name=<?= urlencode($row['publisher_name']) ?>'><?= $row['publisher_name'] ?></p></a>
       <p><strong>Publisher: </strong><?= $row['publisher_address'] ?></p>
-      <p><strong>Date of publication</strong><?= $row['publish_date'] ?></p>
+      <p><strong>Supplier: </strong><?= $row['sup_name'] ?></p>
+      <p><strong>Date of publication: </strong><?= $row['publish_date'] ?></p>
     </div>
     <div id="grig-buttons">
       <a href='../index.php' class='btn btn-primary'>Home</a>
-      <a href='update.php?ISBN=<?= $row['ISBN'] ?>' class='btn btn-secondary'>Edit</a>
-      <a href='delete.php?ISBN=<?= $row['ISBN'] ?>' class='btn btn-tertiary'>Delete</a>
+      <?php
+      if (isset($_SESSION['adm'])) {
+        echo "
+        <a href='update.php?ISBN=<?= $row[ISBN] ?>' class='btn btn-secondary'>Edit</a>
+        <a href='delete.php?ISBN=<?= $row[ISBN] ?>' class='btn btn-tertiary'>Delete</a>
+        ";
+      }
+      ?>
     </div>
     <img id="grig-image" src='../images/<?= $row['image'] ?>' class='card-img-top' alt='...'>
 

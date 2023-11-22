@@ -17,6 +17,7 @@ $passError = "";
 if (isset($_POST['login'])) {
   $email = cleanInputs($_POST['email']);
   $password = cleanInputs($_POST['password']);
+  $error = false;
 
 
   if (empty($email)) {
@@ -51,7 +52,7 @@ if (isset($_POST['login'])) {
     } else {
       echo "
       <div class='alert alert-danger pt-120' role='alert'>
-          Something went very wrong!
+          Either email or password is wrong.
       </div>";
     }
   }
