@@ -142,7 +142,7 @@ mysqli_close($connect);
       </div>
       <button name="sign-up" type="submit" class="btn btn-secondary">Create account </button>
 
-      <span>you have an account already? <a href="login.php">sign in here </a></span>
+      <span>you have an account already?<a href="login.php">sign in here </a></span>
     </form>
   </div>
 

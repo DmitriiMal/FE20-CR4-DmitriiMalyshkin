@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
     $data .= "
               <tr>
                 <th scope='row'>$row[id]</th>
-                <td><img src='../images/$row[picture]' alt='user pic' width='50' height='50'></td>
+                <td><img src='../images/$row[picture]' alt='user pic' class='avatar'></td>
                 <td>$row[first_name]</td>
                 <td>$row[last_name]</td>
                 <td>$row[date_of_birth]</td>

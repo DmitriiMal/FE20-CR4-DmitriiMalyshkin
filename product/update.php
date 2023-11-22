@@ -25,11 +25,12 @@ if (isset($_GET['ISBN']) && !empty($_GET['ISBN'])) {
 
   $sql = "SELECT * FROM `suppliers`";
   $result = mysqli_query($connect, $sql);
+
   while ($row_sup = mysqli_fetch_assoc($result)) {
     if ($row['fk_supplier'] == $row_sup['id']) {
-      $options .= "<option selected value='$row_sup[id]'>$row_sup[name]</option>";
+      $options .= "<option selected value='$row_sup[id]'>$row_sup[sup_name]</option>";
     } else {
-      $options .= "<option value='$row_sup[id]'>$row_sup[name]</option>";
+      $options .= "<option value='$row_sup[id]'>$row_sup[sup_name]</option>";
     }
   }
 }
@@ -50,7 +51,7 @@ if (isset($_POST['submit'])) {
 
   if ($_FILES['image']['error'] == 0) {
     if ($row['image'] !== "product.png") {
-      unlink("images/$row[image]");
+      unlink("../images/$row[image]");
     }
 
     $sql = "UPDATE `library` SET `ISBN`='$ISBN',`title`='$title',`image`='$image[0]',`short_description`='$short_description',`type`='$type',`author_first_name`='$author_first_name',`author_last_name`='$author_last_name',`publisher_name`='$publisher_name',`publisher_address`='$publisher_address',`publish_date`='$publish_date', `fk_supplier`='$supplier' WHERE `ISBN`= $ISBN";

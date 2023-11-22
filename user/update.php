@@ -8,11 +8,21 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) {
 }
 
 
+$id = $_SESSION['user'];
+
+// if (isset($_SESSION["adm"])) {
+//   $id = $_GET["id"];
+// } else {
+//   $id = $_SESSION["user"];
+// }
+
+
 if (isset($_SESSION["adm"])) {
-  $id = $_GET["id"];
+  $id = $_GET["id"] ?? $_SESSION["adm"];
 } else {
   $id = $_SESSION["user"];
 }
+
 
 
 require_once "../components/db_connection.php";
@@ -91,8 +101,23 @@ if (isset($_POST['update'])) {
 
 
   if (!$error) {
-    $email = cleanInputs($_POST["email"]);
-    $sql = "UPDATE `users` SET `first_name`='$fname',`last_name`='$lname',`password`='$password',`date_of_birth`='$date_of_birth',`email`='$email',`picture`='$picture[0]' WHERE id = $id";
+    // $email = cleanInputs($_POST["email"]);
+    // $password = hash("sha256", $password);
+
+
+    if ($_FILES['picture']['error'] == 0) {
+      if ($row['picture'] !== "avatar.png") {
+        unlink("../images/$row[picture]");
+      }
+
+      $sql = "UPDATE `users` SET `first_name`='$fname',`last_name`='$lname',`password`='$password',`date_of_birth`='$date_of_birth',`email`='$email',`picture`='$picture[0]' WHERE id = $id";
+    } else {
+
+      $sql = "UPDATE `users` SET `first_name`='$fname',`last_name`='$lname',`password`='$password',`date_of_birth`='$date_of_birth',`email`='$email' WHERE id = $id";
+    }
+
+
+
     $result = mysqli_query($connect, $sql);
 
     if ($result) {
